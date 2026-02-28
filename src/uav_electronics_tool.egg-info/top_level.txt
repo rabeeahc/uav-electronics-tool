@@ -1,0 +1,3 @@
+core
+gui
+uav_electronics_tool

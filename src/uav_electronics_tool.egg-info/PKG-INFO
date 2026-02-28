@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: uav_electronics_tool
+Version: 0.1.0
+Summary: UAV Electronics Component Selection Assistant
+Requires-Python: >=3.11
+License-File: LICENSE
+Requires-Dist: pandas
+Requires-Dist: pydantic
+Requires-Dist: rich
+Requires-Dist: typer
+Dynamic: license-file

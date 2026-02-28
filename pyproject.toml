@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uav_electronics_tool"
+version = "0.1.0"
+description = "UAV Electronics Component Selection Assistant"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas",
+  "pydantic",
+  "rich",
+  "typer",
+]
+
+[project.scripts]
+uav-tool = "uav_electronics_tool.cli:app"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

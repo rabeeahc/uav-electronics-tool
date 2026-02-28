@@ -1,0 +1,2 @@
+[console_scripts]
+uav-tool = uav_electronics_tool.cli:app
