@@ -5,6 +5,9 @@ src/__init__.py
 src/main.py
 src/uav_electronics_tool/__init__.py
 src/uav_electronics_tool/cli.py
+src/uav_electronics_tool/db.py
+src/uav_electronics_tool/gui.py
+src/uav_electronics_tool/recommend.py
 src/uav_electronics_tool.egg-info/PKG-INFO
 src/uav_electronics_tool.egg-info/SOURCES.txt
 src/uav_electronics_tool.egg-info/dependency_links.txt

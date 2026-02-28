@@ -1,2 +1,3 @@
 [console_scripts]
+uav-gui = uav_electronics_tool.gui:main
 uav-tool = uav_electronics_tool.cli:app

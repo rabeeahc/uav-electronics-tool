@@ -1,0 +1,7 @@
+{
+    "vehicle": "multirotor",
+    "n_motors": 4,
+    "mass_kg": 2.0,
+    "thrust_to_weight": 2.0,
+    "battery_cells_s": 6
+}

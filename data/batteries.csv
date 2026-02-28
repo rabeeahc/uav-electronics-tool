@@ -1,0 +1,4 @@
+id,manufacturer,model,cells_s,capacity_mah,c_rating,voltage_nom_v,max_discharge_a,mass_g,price_usd,url
+
+bat_001,Tattu,4S 5200mAh,4,5200,14.8,480,25,65.0,https://example.com
+bat_002,Turnigy,6S 5000mAh,6,5000,22.2,620,30,72.0,https://example.com

@@ -1,0 +1,12 @@
+id,manufacturer,model,kv,max_current_a,max_power_w,voltage_min_v,voltage_max_v,mass_g,price_usd,url
+
+mtr_001,T-Motor,MN3508-700,700,18,400,14.8,25.2,100,39.0,https://example.com/mn3508-700
+mtr_002,T-Motor,MN3508-380,380,22,500,14.8,25.2,112,42.0,https://example.com/mn3508-380
+mtr_003,Sunnysky,X4108S-480,480,20,450,14.8,25.2,125,36.0,https://example.com/x4108s-480
+mtr_004,Sunnysky,X3520-400,400,18,420,14.8,25.2,138,33.0,https://example.com/x3520-400
+mtr_005,Emax,MT3510-700,700,22,500,11.1,22.2,115,28.0,https://example.com/mt3510-700
+mtr_006,Turnigy,Multistar 3508-700,700,20,450,11.1,22.2,110,24.0,https://example.com/multistar-3508-700
+mtr_007,RCINPOWER,GTS V2 2814-900,900,25,600,14.8,25.2,98,30.0,https://example.com/gts2814-900
+mtr_008,BrotherHobby,Avenger 2812-900,900,24,580,14.8,25.2,92,29.0,https://example.com/avenger2812-900
+mtr_009,Hobbywing,X-Rotor 3110-470,470,28,650,14.8,25.2,155,45.0,https://example.com/xrotor3110-470
+mtr_010,iFlight,XING 2809-800,800,26,620,14.8,25.2,120,27.0,https://example.com/xing2809-800
