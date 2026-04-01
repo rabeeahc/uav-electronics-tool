@@ -109,7 +109,6 @@ def recommend_batteries(batteries: pd.DataFrame, mission: Mission, peak_current:
     total_peak = peak_current * mission.n_motors
     df = batteries.copy()
     
-    # Filter by cell count or voltage
     if "cells_s" in df.columns:
         # allow ±1S matching if some DBs are weird, ideally exact match
         df = df[df["cells_s"] == mission.battery_cells_s]
@@ -120,7 +119,6 @@ def recommend_batteries(batteries: pd.DataFrame, mission: Mission, peak_current:
     
     df = df[df["amp_margin"] >= 1.1]  # needs to at least support 110% peak
     
-    # Score: prefer higher capacity, lower mass, cheaper
     df["cap_score"] = 1.0 - ((df["capacity_mah"] - df["capacity_mah"].min()) / max((df["capacity_mah"].max() - df["capacity_mah"].min()), 1e-9))
     df["mass_score"] = (df["mass_g"] - df["mass_g"].min()) / max((df["mass_g"].max() - df["mass_g"].min()), 1e-9) if "mass_g" in df.columns else 0.5
     df["price_score"] = (df["price_usd"] - df["price_usd"].min()) / max((df["price_usd"].max() - df["price_usd"].min()), 1e-9) if "price_usd" in df.columns else 0.5

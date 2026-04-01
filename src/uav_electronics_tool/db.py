@@ -11,7 +11,7 @@ def load_csv_robust(path: Path) -> pd.DataFrame:
             df = pd.read_csv(path, sep=',')
     except Exception:
         df = pd.read_csv(path, sep=',')
-    # Strip any leading unnamed or empty columns if they exist
+        
     df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
     return df
 
@@ -144,11 +144,9 @@ def load_database(data_dir: Path) -> dict[str, pd.DataFrame]:
         except Exception as e:
             print(f"[red]Error loading {fpath.name}: {e}[/red]")
             
-    # Drop completely empty cols, dedup
     for k in db:
         if not db[k].empty:
             db[k] = db[k].dropna(how='all', axis=1)
-            # if multiple files loaded, might have duplicate rows
             # Do NOT use model, since same model string is used for different cells_s in batteries
             db[k] = db[k].drop_duplicates()
             

@@ -9,7 +9,6 @@ document.getElementById('mission-form').addEventListener('submit', async (e) => 
     const btnText = document.querySelector('.btn-text');
     const errorBox = document.getElementById('error-box');
     
-    // UI Loading state
     errorBox.style.display = 'none';
     exportBtn.style.display = 'none';
     spinner.style.display = 'block';
@@ -87,7 +86,6 @@ document.getElementById('export-btn').addEventListener('click', () => {
     const addSection = (title, items) => {
         if (!items || items.length === 0) return;
         csvContent += `--- ${title.toUpperCase()} ---\n`;
-        // Exract headers securely
         const headers = Object.keys(items[0]);
         csvContent += headers.join(",") + "\n";
         
@@ -111,7 +109,6 @@ document.getElementById('export-btn').addEventListener('click', () => {
     addSection("Batteries", lastData.batteries);
     addSection("Propellers", lastData.propellers);
 
-    // Prompt user download sequence natively
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");

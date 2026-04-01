@@ -15,7 +15,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Since it's a static site hitting same domain, usually not strictly required, but safely wide open
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -66,11 +66,9 @@ def recommend_endpoint(req: MissionRequest):
         "propellers": clean_df(sys_recs.propellers, ["manufacturer", "model", "diameter_in", "pitch_in", "mass_g", "score"])
     }
 
-# Fallback basic get route
 @app.get("/api/health")
 def health():
     return {"status": "ok", "db_loaded": not all(v.empty for v in db.values())}
 
-# Local Testing Fallback
 if os.path.isdir(os.path.join(os.getcwd(), "public")):
     app.mount("/", StaticFiles(directory="public", html=True), name="static")
