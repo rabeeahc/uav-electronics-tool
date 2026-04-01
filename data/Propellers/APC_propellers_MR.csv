@@ -1,0 +1,53 @@
+Product Name;Product Code (SKU);Categories;Price ($);Hub Diameter;Hub Thickness;Shaft Diameter;Weight;Diameter (INCHES);Pitch (INCHES);Diameter (METERS);Pitch (-);Weight (grams);Weight (KG);Ct_static;Cp_static
+4.1x4.1E;LP04141E;Multi Rotor (Electric Only), Speed 400 (Electric Only);2.25;0.50 in.;0.30 in.;1/4 in.;0.11 oz.;4.1;4.1;0.10414;1;3.1;0.0031;0.1341;0.0868
+4.75x4.75E;LP04747E;Multi Rotor (Electric Only), Speed 400 (Electric Only);2.25;0.50 in.;0.30 in.;1/4 in.;0.14 oz.;4.75;4.75;0.12065;1;4;0.004;0.12;0.0718
+5x3E;LP05030E;Thin Electric, Multi Rotor (Electric Only);2.25;0.50 in.;0.23 in.;1/4 in.;0.11 oz.;5;3;0.127;0.6;3.1;0.0031;0.1141;0.0504
+5x4R-RH;LP05040R-RH;Multi Rotor (Electric Only), 3D - Reversible ESC;2.75;0.50 in.;0.28 in.;5 mm;0.14 oz.;5;4;0.127;0.8;8;0.008;0.0902;0.0565
+5x5E;LP05050E;Multi Rotor (Electric Only), FPV Racing / Freestyle, Speed 400 (Electric Only);2.25;0.50 in.;0.25 in.;1/4 in.;0.14 oz.;5;5;0.127;1;4;0.004;0.12;0.0719
+5x7.5E;LP05075E;Multi Rotor (Electric Only), FPV Racing / Freestyle, Speed 400 (Electric Only);2.35;0.50 in.;0.28 in.;5 mm;0.18 oz.;5;7.5;0.127;1.5;5;0.005;0.1524;0.0975
+5.1x5.0E;LP05150E;"Multi Rotor (Electric Only), Bundle (2 CW &amp; 2 CCW), FPV Racing / Freestyle";4.96;0.50 in.;0.28 in.;5 mm;0.14 oz.;5.1;5;0.12954;0.980392157;16;0.016;0.1447;0.093
+5.2x6.0E;LP05260E;"Multi Rotor (Electric Only), Bundle (2 CW &amp; 2 CCW), FPV Racing / Freestyle";4.96;0.50 in.;0.28 in.;5 mm;0.14 oz.;5.2;6;0.13208;1.153846154;16;0.016;0.1383;0.0959
+5.5x4.5E;LP05545E;Multi Rotor (Electric Only), FPV Racing / Freestyle, Speed 400 (Electric Only);2.25;0.50 in.;0.30 in.;1/4 in.;0.14 oz.;5.5;4.5;0.1397;0.818181818;4;0.004;0.1196;0.0631
+6x3R-RH;LP06030R-RH;Multi Rotor (Electric Only), 3D - Reversible ESC;2.95;0.50 in.;0.27 in.;5 mm;0.14 oz.;6;3;0.1524;0.5;8;0.008;0.0552;0.0229
+6x4E;LP06040E;Multi Rotor (Electric Only), FPV Racing / Freestyle, Speed 400 (Electric Only);2.29;0.50 in.;0.25 in.;1/4 in.;0.18 oz.;6;4;0.1524;0.666666667;5.1;0.0051;0.1164;0.055
+6x6E;LP06060E;Thin Electric, Multi Rotor (Electric Only), FPV Racing / Freestyle;2.29;0.50 in.;0.26 in.;1/4 in.;0.18 oz.;6;6;0.1524;1;5.1;0.0051;0.1195;0.0707
+7x4E;LP07040E;Thin Electric, Multi Rotor (Electric Only);2.39;0.50 in.;0.33 in.;1/4 in.;0.28 oz.;7;4;0.1778;0.571428571;8;0.008;0.1255;0.0556
+7x4SF;LP07040SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);2.29;0.50 in.;0.32 in.;1/4 in.;0.18 oz.;7;4;0.1778;0.571428571;5.1;0.0051;0.1274;0.0585
+7x5E;LP07050E;Thin Electric, Multi Rotor (Electric Only);2.39;0.50 in.;0.33 in.;1/4 in.;0.28 oz.;7;5;0.1778;0.714285714;8;0.008;0.1319;0.0659
+7x6E;LP07060E;Thin Electric, Multi Rotor (Electric Only);2.39;0.50 in.;0.33 in.;1/4 in.;0.28 oz.;7;6;0.1778;0.857142857;8;0.008;0.1343;0.0745
+8x3.8SF;LP08038SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);2.45;0.50 in.;0.30 in.;1/4 in.;0.25 oz.;8;3.8;0.2032;0.475;7.1;0.0071;0.1414;0.0642
+8x4.5MR;LP08045MR;Multi Rotor (Electric Only);2.36;0.65 in.;0.33 in.;1/4 in.;0.32 oz.;8;4.5;0.2032;0.5625;9.1;0.0091;0.1202;0.052
+8x4.7SF;LP08047SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);2.45;0.50 in.;0.30 in.;1/4 in.;0.25 oz.;8;4.7;0.2032;0.5875;7.1;0.0071;0.1524;0.076
+9x3.8SF;LP09038SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);2.71;0.50 in.;0.33 in.;1/4 in.;0.32 oz.;9;3.8;0.2286;0.422222222;9.1;0.0091;0.1355;0.0593
+9x4.5MR;LP09045MR;Multi Rotor (Electric Only);2.59;0.65 in.;0.34 in.;1/4 in.;0.39 oz.;9;4.5;0.2286;0.5;11.1;0.0111;0.1165;0.0477
+9x4.5MRF-RH;LP09045MRF-RH;Multi Rotor (Electric Only), MR Folding;3.85;NA;4.5 mm;3 mm;0.32 oz.;9;4.5;0.2286;0.5;9;0.009;0.122;0.0522
+9x4.5R-RH;LP09045R-RH;Multi Rotor (Electric Only), 3D - Reversible ESC;4.25;0.65 in.;0.34 in.;1/4 in.;0.46 oz.;9;4.5;0.2286;0.5;26;0.026;0.0654;0.0279
+9x4.7SF;LP09047SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);2.71;0.50 in.;0.31 in.;1/4 in.;0.32 oz.;9;4.7;0.2286;0.522222222;9.1;0.0091;0.1478;0.0695
+9x6SF;LPB09060SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);2.71;0.50 in.;0.30 in.;1/4 in.;0.32 oz.;9;6;0.2286;0.666666667;9.1;0.0091;0.1562;0.0822
+9.5x5MR-P3;LP09550MR-P3;Multi Rotor (Electric Only);5.5;0.65 in.;0.30 in.;8 mm;0.42 oz.;9.5;5;0.2413;0.526315789;24;0.024;0.1202;0.0504
+10x3.8SF;LP10038SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);3.06;0.50 in.;0.31 in.;1/4 in.;0.42 oz.;10;3.8;0.254;0.38;11.9;0.0119;0.1294;0.0558
+10x4.5MR;LP10045MR;Multi Rotor (Electric Only);2.93;0.65 in.;0.35 in.;1/4 in.;0.53 oz.;10;4.5;0.254;0.45;15;0.015;0.1102;0.0428
+10x4.5MRF-RH;LP10045MRF-RH;Multi Rotor (Electric Only), MR Folding;4.25;NA;4.5 mm;3 mm;0.42 oz.;10;4.5;0.254;0.45;12;0.012;0.1131;0.0471
+10x4.7SF;LP10047SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);3.06;0.50 in.;0.29 in.;1/4 in.;0.42 oz.;10;4.7;0.254;0.47;11.9;0.0119;0.1407;0.0637
+10x5.5MR;LP10055MR;Multi Rotor (Electric Only);2.93;0.65 in.;0.35 in.;1/4 in.;0.53 oz.;10;5.5;0.254;0.55;15;0.015;0.1204;0.052
+11x3.8SF;LP11038SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);3.52;0.50 in.;0.31 in.;1/4 in.;0.53 oz.;11;3.8;0.2794;0.345454545;15;0.015;0.1229;0.0514
+11x4.5MR;LP11045MR;Multi Rotor (Electric Only);3.38;0.65 in.;0.35 in.;1/4 in.;0.60 oz.;11;4.5;0.2794;0.409090909;17;0.017;0.1033;0.0385
+11x4.7SF;LP11047SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);3.52;0.50 in.;0.29 in.;1/4 in.;0.53 oz.;11;4.7;0.2794;0.427272727;15;0.015;0.1369;0.0603
+11x5.5MR;LP11055MR;Multi Rotor (Electric Only);3.38;0.65 in.;0.35 in.;1/4 in.;0.60 oz.;11;5.5;0.2794;0.5;17;0.017;0.1129;0.046
+11x7SF;LP11070SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);3.52;0.50 in.;0.31 in.;1/4 in.;0.53 oz.;11;7;0.2794;0.636363636;15;0.015;0.156;0.082
+12x3.8SF;LP12038SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);4.11;0.50 in.;0.30 in.;1/4 in.;0.63 oz.;12;3.8;0.3048;0.316666667;17.9;0.0179;0.1181;0.0486
+12x4.5MR;LP12045MR;Multi Rotor (Electric Only);3.95;0.65 in.;0.36 in.;1/4 in.;0.78 oz.;12;4.5;0.3048;0.375;22.1;0.0221;0.0999;0.0366
+12x4.7SF;LP12047SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);4.11;0.50 in.;0.28 in.;1/4 in.;0.63 oz.;12;4.7;0.3048;0.391666667;17.9;0.0179;0.1311;0.0567
+12x5.5MR;LP12055MR;Multi Rotor (Electric Only);3.95;0.65 in.;0.36 in.;1/4 in.;0.78 oz.;12;5.5;0.3048;0.458333333;22.1;0.0221;0.1095;0.0431
+13x4.5MR;LP13045MR;Multi Rotor (Electric Only);4.65;0.65 in.;0.36 in.;1/4 in.;0.85 oz.;13;4.5;0.3302;0.346153846;24.1;0.0241;0.0901;0.0314
+13x4.7SF;LP13047SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);4.84;0.50 in.;0.30 in.;1/4 in.;0.78 oz.;13;4.7;0.3302;0.361538462;22.1;0.0221;0.1266;0.0538
+13x5.5MR;LP13055MR;Multi Rotor (Electric Only);4.65;0.65 in.;0.36 in.;1/4 in.;0.85 oz.;13;5.5;0.3302;0.423076923;24;0.024;0.0995;0.0372
+14x4.7SF;LP14047SF;Multi Rotor (Electric Only), Slow Fly (Electric Only);5.75;0.50 in.;0.30 in.;1/4 in.;0.88 oz.;14;4.7;0.3556;0.335714286;24.9;0.0249;0.1207;0.0496
+14x5.5MR;LP14055MR;Multi Rotor (Electric Only);5.49;0.65 in.;0.38 in.;1/4 in.;1.06 oz.;14;5.5;0.3556;0.392857143;30.1;0.0301;0.0963;0.0346
+14x8.5E;LPB14085E;Thin Electric, Multi Rotor (Electric Only);5.99;0.80 in.;0.44 in.;1/4 in.;1.31 oz.;14;8.5;0.3556;0.607142857;37;0.037;0.093;0.0388
+15x5.5MR;LP15055MR;Multi Rotor (Electric Only);6.49;0.80 in.;0.36 in.;1/4 in.;1.27 oz.;15;5.5;0.381;0.366666667;36;0.036;0.0951;0.034
+16x5.5MR;LP16055MR;Multi Rotor (Electric Only);7.69;0.80 in.;0.37 in.;1/4 in.;1.55 oz.;16;5.5;0.4064;0.34375;44;0.044;0.0897;0.0313
+16x7C;LP16070C;Sport, Thin Electric, Multi Rotor (Electric Only);65;1.25 in.;0.61 in.;5/16 in.;2.61 oz.;16;7;0.4064;0.4375;74;0.074;0.0954;0.0354
+18x5.5MR;LP18055MR;Multi Rotor (Electric Only);10.72;1.00 in.;0.41 in.;1/4 in.;2.15 oz.;18;5.5;0.4572;0.305555556;61;0.061;0.0839;0.0284
+20x13E;LP20013E;Thin Electric, Multi Rotor (Electric Only);17.33;1.25 in.;0.51 in.;1/4 in.;3.46 oz.;20;13;0.508;0.65;98;0.098;0.0936;0.0407
+27x13E;LP27013E;Thin Electric, Multi Rotor (Electric Only);43.47;1.75 in.;0.61 in.;5/16 in.;8.18 oz.;27;13;0.6858;0.481481481;232;0.232;0.0871;0.0316

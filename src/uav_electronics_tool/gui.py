@@ -7,29 +7,30 @@ from tkinter import ttk, filedialog, messagebox
 
 import pandas as pd
 
-from .recommend import Mission, load_motors_csv, recommend_motors, save_recommendations
+from .recommend import Mission, recommend_system, save_system_recommendations
+from .db import load_database, validate_db
 
 
-def _open_file(path: Path) -> None:
+def _open_folder(path: Path) -> None:
     try:
         os.startfile(str(path))  # Windows
     except Exception:
-        messagebox.showinfo("Open file", f"Saved at:\n{path.resolve()}")
+        messagebox.showinfo("Open folder", f"Saved at:\n{path.resolve()}")
 
 
 class App(ttk.Frame):
     def __init__(self, master: tk.Tk) -> None:
         super().__init__(master, padding=12)
-        self.master.title("UAV Electronics Tool (Multirotor)")
-        self.master.geometry("980x600")
-        self.master.minsize(900, 560)
+        self.master.title("UAV Electronics Tool (Full System)")
+        self.master.geometry("980x650")
+        self.master.minsize(900, 600)
 
         # Vars
-        self.motors_csv = tk.StringVar(value=str(Path("data") / "motors.csv"))
-        self.out_csv = tk.StringVar(value=str(Path("outputs") / "recommendations_motors.csv"))
+        self.data_dir = tk.StringVar(value=str(Path("data")))
+        self.out_dir = tk.StringVar(value=str(Path("outputs")))
 
         self.n_motors = tk.IntVar(value=4)
-        self.mass_kg = tk.DoubleVar(value=2.2)
+        self.mass_kg = tk.DoubleVar(value=2.0)
         self.tw = tk.DoubleVar(value=2.0)
         self.cells = tk.IntVar(value=6)
         self.v_nom = tk.StringVar(value="")  # optional
@@ -57,7 +58,7 @@ class App(ttk.Frame):
         right.rowconfigure(0, weight=1)
 
         # ---------- Inputs ----------
-        inputs = ttk.LabelFrame(left, text="Inputs", padding=10)
+        inputs = ttk.LabelFrame(left, text="Mission Inputs", padding=10)
         inputs.grid(row=0, column=0, sticky="ew")
         left.columnconfigure(0, weight=1)
 
@@ -76,41 +77,32 @@ class App(ttk.Frame):
         tip = ttk.Label(left, text="Tip: Leave V_nom blank to use 3.7V × S", foreground="#666")
         tip.grid(row=1, column=0, sticky="w", pady=(6, 10))
 
-        # ---------- Files ----------
-        files = ttk.LabelFrame(left, text="Files", padding=10)
+        # ---------- Directories ----------
+        files = ttk.LabelFrame(left, text="Directories", padding=10)
         files.grid(row=2, column=0, sticky="ew", pady=(0, 10))
         files.columnconfigure(1, weight=1)
 
-        def browse_in(var: tk.StringVar) -> None:
-            p = filedialog.askopenfilename(title="Select CSV", filetypes=[("CSV files", "*.csv"), ("All files", "*.*")])
+        def browse_dir(var: tk.StringVar, title: str) -> None:
+            p = filedialog.askdirectory(title=title)
             if p:
                 var.set(p)
 
-        def browse_out(var: tk.StringVar) -> None:
-            p = filedialog.asksaveasfilename(
-                title="Save output CSV",
-                defaultextension=".csv",
-                filetypes=[("CSV files", "*.csv"), ("All files", "*.*")],
-            )
-            if p:
-                var.set(p)
+        ttk.Label(files, text="Data Folder").grid(row=0, column=0, sticky="w", padx=(0, 10), pady=4)
+        ttk.Entry(files, textvariable=self.data_dir).grid(row=0, column=1, sticky="ew", pady=4)
+        ttk.Button(files, text="Browse", command=lambda: browse_dir(self.data_dir, "Select data folder")).grid(row=0, column=2, padx=(8, 0), pady=4)
 
-        ttk.Label(files, text="motors.csv").grid(row=0, column=0, sticky="w", padx=(0, 10), pady=4)
-        ttk.Entry(files, textvariable=self.motors_csv).grid(row=0, column=1, sticky="ew", pady=4)
-        ttk.Button(files, text="Browse", command=lambda: browse_in(self.motors_csv)).grid(row=0, column=2, padx=(8, 0), pady=4)
-
-        ttk.Label(files, text="Output CSV").grid(row=1, column=0, sticky="w", padx=(0, 10), pady=4)
-        ttk.Entry(files, textvariable=self.out_csv).grid(row=1, column=1, sticky="ew", pady=4)
-        ttk.Button(files, text="Browse", command=lambda: browse_out(self.out_csv)).grid(row=1, column=2, padx=(8, 0), pady=4)
+        ttk.Label(files, text="Output Folder").grid(row=1, column=0, sticky="w", padx=(0, 10), pady=4)
+        ttk.Entry(files, textvariable=self.out_dir).grid(row=1, column=1, sticky="ew", pady=4)
+        ttk.Button(files, text="Browse", command=lambda: browse_dir(self.out_dir, "Select outputs folder")).grid(row=1, column=2, padx=(8, 0), pady=4)
 
         # ---------- Actions ----------
         actions = ttk.LabelFrame(left, text="Actions", padding=10)
         actions.grid(row=3, column=0, sticky="ew")
         actions.columnconfigure(0, weight=1)
 
-        ttk.Button(actions, text="Validate DB (scan data/*.csv)", command=self.validate_db).grid(row=0, column=0, sticky="ew", pady=4)
-        ttk.Button(actions, text="Recommend Motors", command=self.recommend).grid(row=1, column=0, sticky="ew", pady=4)
-        ttk.Button(actions, text="Open Output CSV", command=self.open_output).grid(row=2, column=0, sticky="ew", pady=4)
+        ttk.Button(actions, text="Validate DB", command=self.validate_db).grid(row=0, column=0, sticky="ew", pady=4)
+        ttk.Button(actions, text="Recommend System", command=self.recommend).grid(row=1, column=0, sticky="ew", pady=4)
+        ttk.Button(actions, text="Open Output Folder", command=self.open_output).grid(row=2, column=0, sticky="ew", pady=4)
 
         # ---------- Results ----------
         results = ttk.LabelFrame(right, text="Results", padding=10)
@@ -118,7 +110,8 @@ class App(ttk.Frame):
         results.columnconfigure(0, weight=1)
         results.rowconfigure(0, weight=1)
 
-        self.text = tk.Text(results, wrap="none", height=20)
+        self.text = tk.Text(results, wrap="none", height=25)
+        self.text.tag_configure("header", font=("Segoe UI", 10, "bold"), spacing1=10, spacing3=5)
         self.text.grid(row=0, column=0, sticky="nsew")
 
         y = ttk.Scrollbar(results, orient="vertical", command=self.text.yview)
@@ -128,40 +121,38 @@ class App(ttk.Frame):
         y.grid(row=0, column=1, sticky="ns")
         x.grid(row=1, column=0, sticky="ew")
 
-    def log(self, msg: str) -> None:
-        self.text.insert(tk.END, msg + "\n")
+    def log(self, msg: str, tag=None) -> None:
+        if tag:
+            self.text.insert(tk.END, msg + "\n", (tag,))
+        else:
+            self.text.insert(tk.END, msg + "\n")
         self.text.see(tk.END)
 
     def validate_db(self) -> None:
-        data_path = Path("data")
+        data_path = Path(self.data_dir.get())
         if not data_path.exists():
             messagebox.showerror("Validate DB", f"Folder not found: {data_path.resolve()}")
             return
 
-        csv_files = sorted(data_path.glob("*.csv"))
-        if not csv_files:
-            messagebox.showwarning("Validate DB", f"No CSV files found in: {data_path.resolve()}")
-            return
-
-        self.log(f"Scanning: {data_path.resolve()}")
+        self.log(f"Scanning folder: {data_path.resolve()}", "header")
+        db = load_database(data_path)
+        
         any_fail = False
-
-        for f in csv_files:
-            try:
-                df = pd.read_csv(f)
-                if df.shape[1] == 0:
-                    self.log(f"BAD: {f.name} (no columns)")
-                    any_fail = True
-                else:
-                    self.log(f"OK:  {f.name}  rows={len(df)} cols={df.shape[1]}")
-            except Exception as e:
-                self.log(f"ERR: {f.name} -> {type(e).__name__}: {e}")
+        for k, v in db.items():
+            if v.empty:
+                self.log(f"Warning: No valid data found for '{k}'")
                 any_fail = True
+            else:
+                self.log(f"OK: {k} -> {len(v)} items loaded")
 
-        messagebox.showwarning("Validate DB", "Some CSV files have problems. See Results.") if any_fail else messagebox.showinfo("Validate DB", "All CSV files look readable ✅")
+        if any_fail:
+            messagebox.showwarning("Validate DB", "Some datasets are empty or not found. See Results.")
+        else:
+            messagebox.showinfo("Validate DB", "All datasets loaded successfully ✅")
 
     def recommend(self) -> None:
         try:
+            self.text.delete("1.0", tk.END)
             v_nom_str = self.v_nom.get().strip()
             v_nom_val = float(v_nom_str) if v_nom_str else None
 
@@ -173,50 +164,63 @@ class App(ttk.Frame):
                 voltage_nom_v=v_nom_val,
             )
 
-            motors_path = Path(self.motors_csv.get())
-            if not motors_path.exists():
-                messagebox.showerror("Recommend", f"motors.csv not found:\n{motors_path.resolve()}")
+            data_path = Path(self.data_dir.get())
+            if not data_path.exists():
+                messagebox.showerror("Recommend", f"Data folder not found:\n{data_path.resolve()}")
                 return
 
-            motors = load_motors_csv(motors_path)
-            recs = recommend_motors(motors, mission)
-
-            if recs.empty:
-                self.log("No motors matched constraints. Try lower mass/TW or different cells.")
-                messagebox.showwarning("Recommend", "No motors matched. See Results.")
+            self.log("Loading datasets...", "header")
+            db = load_database(data_path)
+            
+            if all(v.empty for v in db.values()):
+                messagebox.showerror("Recommend", "Data folder is empty or invalid.")
                 return
 
-            out_path = Path(self.out_csv.get())
-            save_recommendations(recs, out_path)
+            self.log("Generating full system recommendations...", "header")
+            sys_recs = recommend_system(db, mission)
+
+            if sys_recs.is_empty:
+                self.log("No components matched your mission constraints.")
+                messagebox.showwarning("Recommend", "No components matched. Try lighter mass or different battery cells.")
+                return
+
+            out_path = Path(self.out_dir.get())
+            save_system_recommendations(sys_recs, out_path)
 
             top_n = int(self.top_n.get())
-            show = recs.head(top_n)[["manufacturer", "model", "kv", "mass_g", "price_usd", "power_margin", "current_margin", "score"]]
 
-            self.log("")
-            self.log("=== Recommend Motors ===")
-            self.log(f"Saved: {out_path.resolve()}")
-            self.log(f"Inputs: motors={mission.n_motors}, mass={mission.mass_kg}kg, TW={mission.thrust_to_weight}, S={mission.battery_cells_s}, Vnom={mission.voltage_nom_v or 'auto'}")
-            self.log("")
-            self.log(show.to_string(index=False))
-            self.log("")
+            self.log(f"\nSaved recommendations to: {out_path.resolve()}")
+            self.log(f"Inputs: mass={mission.mass_kg}kg, TW={mission.thrust_to_weight}, n_motors={mission.n_motors}, {mission.battery_cells_s}S\n")
 
-            messagebox.showinfo("Recommend", f"Saved recommendations to:\n{out_path.resolve()}")
+            def display_result(df: pd.DataFrame, title: str, cols: list[str]):
+                self.log(f"=== Top {min(top_n, len(df))} {title} ===", "header")
+                if df.empty:
+                    self.log(f"No suitable {title} found.\n")
+                    return
+                show = df.head(top_n)[[c for c in cols if c in df.columns]]
+                self.log(show.to_string(index=False) + "\n")
+
+            display_result(sys_recs.motors, "Motors", ["manufacturer", "model", "kv", "mass_g", "price_usd", "score"])
+            display_result(sys_recs.escs, "ESCs", ["manufacturer", "model", "max_current_a", "voltage_max_v", "mass_g", "score"])
+            display_result(sys_recs.batteries, "Batteries", ["manufacturer", "model", "cells_s", "capacity_mah", "c_rating", "mass_g", "score"])
+            display_result(sys_recs.propellers, "Propellers", ["manufacturer", "model", "diameter_in", "pitch_in", "mass_g", "score"])
+
+            messagebox.showinfo("Recommend", f"Saved component recommendations to:\n{out_path.resolve()}")
 
         except Exception as e:
             self.log(f"ERROR: {type(e).__name__}: {e}")
-            messagebox.showerror("Recommend", f"{type(e).__name__}: {e}")
+            messagebox.showerror("Recommend Error", f"{type(e).__name__}: {e}")
 
     def open_output(self) -> None:
-        p = Path(self.out_csv.get())
+        p = Path(self.out_dir.get())
         if not p.exists():
-            messagebox.showwarning("Open Output", f"Output not found:\n{p.resolve()}")
+            messagebox.showwarning("Open Output", f"Folder not found:\n{p.resolve()}")
             return
-        _open_file(p)
+        _open_folder(p)
 
 
 def main() -> None:
     root = tk.Tk()
-    # Slightly nicer default spacing on Windows
     style = ttk.Style()
     try:
         style.theme_use("vista")
@@ -224,3 +228,6 @@ def main() -> None:
         pass
     App(root)
     root.mainloop()
+
+if __name__ == "__main__":
+    main()
