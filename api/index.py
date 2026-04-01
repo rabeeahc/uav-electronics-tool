@@ -21,7 +21,7 @@ app.add_middleware(
 )
 
 # Load Database into memory globally (since Vercel keeps instances warm temporarily)
-DATA_DIR = Path(os.path.join(os.getcwd(), "data"))
+DATA_DIR = Path(__file__).parent.parent / "data"
 db = load_database(DATA_DIR)
 
 class MissionRequest(BaseModel):
